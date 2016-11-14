@@ -40,14 +40,16 @@ Only source files are provided for each example and user can tailor the provided
            This is the only file that needs to be included in the user application to interface with the library.
   - Projects
     - peripheral_Examples
-      - The W7500P standard Peripherals library provides a rich set of examples covering the main features of each peripheral. 
+      - The W7500P standard Peripherals library provides a rich set of examples 
+        covering the main features of each peripheral. 
     - portFreeRTOS
       - The port for W7500P, includes FreeRTOSConfig.h .
   - Utilities
     - FreeRTOSv9.0.0
       - The FreeRTOS source code.
     - w7500p_flash_algo_mdk
-      - The W7500P standard library provides W7500P 128KB flash algorithm project to debug W7500P IC with using CoLinkEx / ULINK / CMSIS-DAP debugger. 
+      - The W7500P standard library provides W7500P 128KB flash algorithm project 
+        to debug W7500P IC with using CoLinkEx / ULINK / CMSIS-DAP debugger. 
 
 ##Peripheral description and examples
 
