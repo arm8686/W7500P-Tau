@@ -1,0 +1,9 @@
+.\obj\main.o: ..\main.c
+.\obj\main.o: ..\..\..\Libraries\W7500x_stdPeriph_Driver\inc\W7500x_gpio.h
+.\obj\main.o: ..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\W7500x.h
+.\obj\main.o: ..\..\..\Libraries\CMSIS\Include\core_cm0.h
+.\obj\main.o: d:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\obj\main.o: ..\..\..\Libraries\CMSIS\Include\core_cmInstr.h
+.\obj\main.o: ..\..\..\Libraries\CMSIS\Include\core_cmFunc.h
+.\obj\main.o: ..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\system_W7500x.h
+.\obj\main.o: ..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\W7500x.h

@@ -1,0 +1,180 @@
+Dependencies for Project 'portFreeRTOS', Target 'portFreeRTOS': (DO NOT MODIFY !)
+F (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Source\ARM\startup_W7500x_FreeRTOS.s)(0x5818358F)(--cpu Cortex-M0 --li -g --apcs=interwork -I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include--list .\list\startup_w7500x_freertos.lst --xref -o .\obj\startup_w7500x_freertos.o --depend .\obj\startup_w7500x_freertos.d)
+F (..\..\..\Libraries\W7500x_stdPeriph_Driver\src\W7500x_gpio.c)(0x582690CD)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\w7500x_gpio.o --omf_browse .\obj\w7500x_gpio.crf --depend .\obj\w7500x_gpio.d)
+I (..\..\..\Libraries\W7500x_stdPeriph_Driver\inc\W7500x_gpio.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\W7500x.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Include\core_cm0.h)(0x582690CD)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\system_W7500x.h)(0x582690CD)
+F (..\..\..\Libraries\W7500x_stdPeriph_Driver\src\W7500x_crg.c)(0x582690CD)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\w7500x_crg.o --omf_browse .\obj\w7500x_crg.crf --depend .\obj\w7500x_crg.d)
+I (..\..\..\Libraries\W7500x_stdPeriph_Driver\inc\W7500x_crg.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\W7500x.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Include\core_cm0.h)(0x582690CD)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\system_W7500x.h)(0x582690CD)
+F (..\..\..\Libraries\W7500x_stdPeriph_Driver\src\W7500x_uart.c)(0x582690CD)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\w7500x_uart.o --omf_browse .\obj\w7500x_uart.crf --depend .\obj\w7500x_uart.d)
+I (..\..\..\Libraries\W7500x_stdPeriph_Driver\inc\W7500x_uart.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\W7500x.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Include\core_cm0.h)(0x582690CD)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\system_W7500x.h)(0x582690CD)
+F (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Source\system_W7500x.c)(0x582173B2)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\system_w7500x.o --omf_browse .\obj\system_w7500x.crf --depend .\obj\system_w7500x.d)
+I (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\system_W7500x.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\W7500x.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Include\core_cm0.h)(0x582690CD)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x582690CD)
+F (..\main.c)(0x581AA8B6)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
+I (..\..\..\Libraries\W7500x_stdPeriph_Driver\inc\W7500x_gpio.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\W7500x.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Include\core_cm0.h)(0x582690CD)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\system_W7500x.h)(0x582690CD)
+I (..\..\..\Libraries\W7500x_stdPeriph_Driver\inc\W7500x_uart.h)(0x582690CD)
+I (..\..\..\Utilities\print_x\print_x.h)(0x5818A8E3)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\FreeRTOS.h)(0x573F3A16)
+I (d:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x52FDD27E)
+I (..\FreeRTOSConfig.h)(0x581940C7)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\projdefs.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\portable.h)(0x58182821)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\deprecated_definitions.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0\portmacro.h)(0x573F3A17)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\mpu_wrappers.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\task.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\list.h)(0x573F3A16)
+F (..\W7500x_it.c)(0x57BE6A69)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\w7500x_it.o --omf_browse .\obj\w7500x_it.crf --depend .\obj\w7500x_it.d)
+I (..\W7500x_it.h)(0x57BE6A69)
+I (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\W7500x.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Include\core_cm0.h)(0x582690CD)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\system_W7500x.h)(0x582690CD)
+F (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0\port.c)(0x58194176)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\port.o --omf_browse .\obj\port.crf --depend .\obj\port.d)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\FreeRTOS.h)(0x573F3A16)
+I (d:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x52FDD27E)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\FreeRTOSConfig.h)(0x581940C7)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\projdefs.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\portable.h)(0x58182821)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\deprecated_definitions.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0\portmacro.h)(0x573F3A17)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\mpu_wrappers.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\task.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\list.h)(0x573F3A16)
+F (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\tasks.c)(0x581823F1)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\tasks.o --omf_browse .\obj\tasks.crf --depend .\obj\tasks.d)
+I (d:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x52FDD27E)
+I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x52FDD27E)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\FreeRTOS.h)(0x573F3A16)
+I (d:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x52FDD27E)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\FreeRTOSConfig.h)(0x581940C7)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\projdefs.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\portable.h)(0x58182821)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\deprecated_definitions.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0\portmacro.h)(0x573F3A17)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\mpu_wrappers.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\task.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\list.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\timers.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\StackMacros.h)(0x573F3A16)
+F (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\list.c)(0x573F3A16)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\list.o --omf_browse .\obj\list.crf --depend .\obj\list.d)
+I (d:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x52FDD27E)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\FreeRTOS.h)(0x573F3A16)
+I (d:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x52FDD27E)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\FreeRTOSConfig.h)(0x581940C7)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\projdefs.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\portable.h)(0x58182821)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\deprecated_definitions.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0\portmacro.h)(0x573F3A17)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\mpu_wrappers.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\list.h)(0x573F3A16)
+F (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\queue.c)(0x573F3A17)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\queue.o --omf_browse .\obj\queue.crf --depend .\obj\queue.d)
+I (d:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x52FDD27E)
+I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x52FDD27E)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\FreeRTOS.h)(0x573F3A16)
+I (d:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x52FDD27E)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\FreeRTOSConfig.h)(0x581940C7)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\projdefs.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\portable.h)(0x58182821)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\deprecated_definitions.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0\portmacro.h)(0x573F3A17)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\mpu_wrappers.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\task.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\list.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\queue.h)(0x573F3A16)
+F (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\MemMang\heap_2.c)(0x573F3A16)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\heap_2.o --omf_browse .\obj\heap_2.crf --depend .\obj\heap_2.d)
+I (d:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x52FDD27E)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\FreeRTOS.h)(0x573F3A16)
+I (d:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x52FDD27E)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\FreeRTOSConfig.h)(0x581940C7)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\projdefs.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\portable.h)(0x58182821)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\deprecated_definitions.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0\portmacro.h)(0x573F3A17)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\mpu_wrappers.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\task.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\list.h)(0x573F3A16)
+F (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\croutine.c)(0x573F3A16)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\croutine.o --omf_browse .\obj\croutine.crf --depend .\obj\croutine.d)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\FreeRTOS.h)(0x573F3A16)
+I (d:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x52FDD27E)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\FreeRTOSConfig.h)(0x581940C7)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\projdefs.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\portable.h)(0x58182821)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\deprecated_definitions.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0\portmacro.h)(0x573F3A17)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\mpu_wrappers.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\task.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\list.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\croutine.h)(0x573F3A16)
+F (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\event_groups.c)(0x573F3A16)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\event_groups.o --omf_browse .\obj\event_groups.crf --depend .\obj\event_groups.d)
+I (d:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x52FDD27E)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\FreeRTOS.h)(0x573F3A16)
+I (d:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x52FDD27E)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\FreeRTOSConfig.h)(0x581940C7)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\projdefs.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\portable.h)(0x58182821)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\deprecated_definitions.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0\portmacro.h)(0x573F3A17)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\mpu_wrappers.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\task.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\list.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\timers.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\event_groups.h)(0x573F3A16)
+F (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\timers.c)(0x573F3A17)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\timers.o --omf_browse .\obj\timers.crf --depend .\obj\timers.d)
+I (d:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x52FDD27E)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\FreeRTOS.h)(0x573F3A16)
+I (d:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x52FDD27E)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\FreeRTOSConfig.h)(0x581940C7)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\projdefs.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\portable.h)(0x58182821)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\deprecated_definitions.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0\portmacro.h)(0x573F3A17)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\mpu_wrappers.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\task.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\list.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\queue.h)(0x573F3A16)
+I (..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include\timers.h)(0x573F3A16)
+F (..\..\..\Utilities\print_x\print_x.c)(0x5818A8E4)(-c --cpu Cortex-M0 --li -g -O2 --apcs=interwork -I..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include -I..\..\..\Libraries\W7500x_stdPeriph_Driver\inc -I..\..\..\Libraries\CMSIS\Include -I..\ -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\include -I..\..\..\Utilities\FreeRTOSv9.0.0\FreeRTOS\Source\portable\RVDS\ARM_CM0 -I..\..\..\Utilities\print_x-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DCORTEX_M0 -DUSE_STDPERIPH_DRIVER -o .\obj\print_x.o --omf_browse .\obj\print_x.crf --depend .\obj\print_x.d)
+I (..\..\..\Utilities\print_x\print_x.h)(0x5818A8E3)
+I (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\W7500x.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Include\core_cm0.h)(0x582690CD)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x582690CD)
+I (..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\system_W7500x.h)(0x582690CD)
