@@ -1,9 +1,0 @@
-.\obj\w7500x_crg.o: ..\..\..\Libraries\W7500x_stdPeriph_Driver\src\W7500x_crg.c
-.\obj\w7500x_crg.o: ..\..\..\Libraries\W7500x_stdPeriph_Driver\inc\W7500x_crg.h
-.\obj\w7500x_crg.o: ..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\W7500x.h
-.\obj\w7500x_crg.o: ..\..\..\Libraries\CMSIS\Include\core_cm0.h
-.\obj\w7500x_crg.o: d:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
-.\obj\w7500x_crg.o: ..\..\..\Libraries\CMSIS\Include\core_cmInstr.h
-.\obj\w7500x_crg.o: ..\..\..\Libraries\CMSIS\Include\core_cmFunc.h
-.\obj\w7500x_crg.o: ..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\system_W7500x.h
-.\obj\w7500x_crg.o: ..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\W7500x.h
