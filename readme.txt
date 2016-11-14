@@ -1,4 +1,4 @@
-![Fig.directory_structure](https://github.com/arm8686/W7500P-Tau/blob/master/pic/W7500P-Tau1.jpg)
+![image](https://github.com/arm8686/W7500P-Tau/blob/master/pic/W7500P-Tau1.jpg)
 
 该开发板可使用 CoLinkEx、Ulink、CMSIS-DAP 进行调试仿真，基于 Keil 编译器与 SWD 接口（没有 JTAG 接口）。
 
