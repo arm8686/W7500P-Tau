@@ -10,6 +10,7 @@ extern "C" {
 #endif
 
 #include "integer.h"
+#include "mmc_sd.h"
 
 
 /* Status of Disk Functions */

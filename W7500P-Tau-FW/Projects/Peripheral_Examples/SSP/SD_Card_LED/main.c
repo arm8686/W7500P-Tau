@@ -14,9 +14,9 @@
 /**
   ******************************************************************************
   * @file    SSP/SD_Card_LED/main.c 
-  * @author  IOP Team
+  * @author  popctrl@163.com
   * @version V1.0.0
-  * @date    26-AUG-2015
+  * @date    06-Nov-2016
   * @brief   Main program body
   ******************************************************************************
   * @attention
@@ -28,32 +28,34 @@
   * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
   *
-  * <h2><center>&copy; COPYRIGHT 2015 WIZnet Co.,Ltd.</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2016 </center></h2>
   ******************************************************************************
   */ 
 
 /* Includes ------------------------------------------------------------------*/
-#include <stdio.h>
-#include "W7500x_gpio.h"
-#include "W7500x_ssp.h"
-#include "W7500x_uart.h"
+//#include <stdio.h>
+#include "W7500x.h"
+//#include "W7500x_gpio.h"
+//#include "W7500x_ssp.h"
+//#include "W7500x_uart.h"
 #include "mmc_sd.h"
+#include "print_x.h"
 
 /* Private typedef -----------------------------------------------------------*/
 typedef enum {FAILED = 0, PASSED = !FAILED} TestStatus;
 
 /* Private define ------------------------------------------------------------*/
-#define BLOCK_SIZE            511 /* Block Size in Bytes */
+#define BLOCK_SIZE            512 /* Can not be used 512 Block */
 
-#define NUMBER_OF_BLOCKS      8  /* For Multi Blocks operation (Read/Write) */
+#define NUMBER_OF_BLOCKS      2  /* For Multi Blocks operation (Read/Write) */
 #define MULTI_BUFFER_SIZE    (BLOCK_SIZE * NUMBER_OF_BLOCKS)
 
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-UART_InitTypeDef UART_InitStructure;
-uint8_t Buffer_Block_Tx[BLOCK_SIZE]={1};
+//UART_InitTypeDef UART_InitStructure;
+uint8_t Buffer_Block_Tx[BLOCK_SIZE];
 uint8_t Buffer_Block_Rx[BLOCK_SIZE];
-uint8_t Buffer_MultiBlock_Tx[MULTI_BUFFER_SIZE]={1};
+uint8_t Buffer_MultiBlock_Tx[MULTI_BUFFER_SIZE];
 uint8_t Buffer_MultiBlock_Rx[MULTI_BUFFER_SIZE];
 volatile TestStatus EraseStatus = FAILED;
 volatile TestStatus TransferStatus1 = FAILED;
@@ -68,13 +70,34 @@ TestStatus eBuffercmp(uint8_t* pBuffer, uint32_t BufferLength);
 
 /* Private functions ---------------------------------------------------------*/
 
+
 /**
   * @brief  Main Function
   */
 int main()
 {
-    /* Set Systme init */
+//    GPIO_InitTypeDef GPIO_InitDef;
+    /* Set System init */
     SystemInit();
+
+    /* Configure UART2 */
+    UART2->BAUDDIV = 417;   /* (48000000 / 115200) */
+    UART2->CTRL |= (S_UART_CTRL_RX_EN | S_UART_CTRL_TX_EN);
+
+//    S_UART_Init(115200);
+    prt_str("W7500P ---SD Card (just read)--- Test!\r\n\r\n");
+
+    /* GPIO PA_02 CLKOUT Set */
+//    GPIO_InitDef.GPIO_Pin = GPIO_Pin_2; // Set to PA_02 (CLKOUT)
+//    GPIO_InitDef.GPIO_Mode = GPIO_Mode_AF; // Set to Mode AF
+//    GPIO_InitDef.GPIO_Pad = GPIO_PuPd_DOWN;
+//    GPIO_Init(GPIOA, &GPIO_InitDef);
+//    PAD_AFConfig(PAD_PA,GPIO_Pin_2, PAD_AF2); // PAD Config - used 2nd Function
+
+//     test_print_x();
+    
+    /* CLK OUT Set */
+//    PAD_AFConfig(PAD_PA,GPIO_Pin_2, PAD_AF2); // PAD Config - CLKOUT used 3nd Function
     /*SD_GPIO_Initailization*/
     bsp_sd_gpio_init();
 
@@ -99,27 +122,25 @@ int main()
   */
 void SD_SingleBlockTest(void)
 {    
-  /* Write block of 512 bytes on address 0 */
-  SD_WriteSingleBlock (0x00, Buffer_Block_Tx);
+  uint8_t tmp;
+  uint16_t i,j;
 
   /* Read block of 512 bytes on address 0 */
   SD_ReadSingleBlock (0x00, Buffer_Block_Rx);
 
-  /* Check the correctness of written data */
-  TransferStatus1 = Buffercmp(Buffer_Block_Tx, Buffer_Block_Rx, BLOCK_SIZE);
+  prt_str("\r\nRead Singleblock of 512 bytes on address 0:\r\n\r\n");
+  for (i=0;i<32;i++){ for (j=0;j<16;j++) {prt_hb(Buffer_Block_Rx[i*16+j]); prt_str(" ");} prt_str("\r\n");}
 
-  if(TransferStatus1 == PASSED)
+  for(tmp=0; tmp<20; tmp++)
   {
-    GPIO_ResetBits(GPIOC, GPIO_Pin_5); //Blue LED ON
+    delay_ms(50);
+//    GPIO_ResetBits(GPIOC, GPIO_Pin_0); // LED(R) On
+    GPIOC->LB_MASKED[1] = 0x00;
+    delay_ms(50);
+//    GPIO_SetBits(GPIOC, GPIO_Pin_0); // LED(R) Off
+    GPIOC->LB_MASKED[1] = 0x01;
   }
-  else
-  {
-    GPIO_ResetBits(GPIOC, GPIO_Pin_8); //Red LED ON
-  }
-  delay_ms(1000);
-  GPIO_SetBits(GPIOC, GPIO_Pin_5); //Blue LED off
-  GPIO_SetBits(GPIOC, GPIO_Pin_8); //Red LED off
-  delay_ms(1000);
+
 }
 
 /**
@@ -129,28 +150,26 @@ void SD_SingleBlockTest(void)
   */
 void SD_MultiBlockTest(void)
 {
-    
-  /* Write block of 512 bytes on address 0 */
-  SD_WriteMultiBlock (0x00, Buffer_MultiBlock_Tx, NUMBER_OF_BLOCKS);
+  uint8_t tmp;
+  uint16_t i,j;
 
   /* Read block of 512 bytes on address 0 */
+//  while(1)
   SD_ReadMultiBlock (0x00, Buffer_MultiBlock_Rx, NUMBER_OF_BLOCKS);
 
-  /* Check the correctness of written data */
-  TransferStatus2 = Buffercmp(Buffer_MultiBlock_Tx, Buffer_MultiBlock_Rx, BLOCK_SIZE);
+  prt_str("\r\nRead Multiblock of 512 bytes on address 0:\r\n\r\n");
+  for (i=0;i<32;i++){ for (j=0;j<16;j++) {prt_hb(Buffer_MultiBlock_Rx[i*16+j]); prt_str(" ");} prt_str("\r\n");}
 
-  if(TransferStatus2 == PASSED)
+  for(tmp=0; tmp<10; tmp++)
   {
-    GPIO_ResetBits(GPIOC, GPIO_Pin_9);//Green LED ON
+    delay_ms(150);
+//    GPIO_ResetBits(GPIOC, GPIO_Pin_0); // LED(R) On
+    GPIOC->LB_MASKED[1] = 0x00;
+    delay_ms(150);
+//    GPIO_SetBits(GPIOC, GPIO_Pin_0); // LED(R) Off
+    GPIOC->LB_MASKED[1] = 0x01;
   }
-  else
-  {
-    GPIO_ResetBits(GPIOC, GPIO_Pin_8);//Red LED ON
-  }
-  delay_ms(1000);
-  GPIO_SetBits(GPIOC, GPIO_Pin_9);//Green LED off
-  GPIO_SetBits(GPIOC, GPIO_Pin_8);//Red LED off
-  delay_ms(1000);
+
 }
 
 /**
@@ -208,3 +227,4 @@ void delay_ms(__IO uint32_t nCount)
     for(; delay != 0; delay--)
         __NOP();
 }
+

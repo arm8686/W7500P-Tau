@@ -1,34 +1,34 @@
 /*******************************************************************************************************************************************************
- * Copyright ¨Ï 2016 <WIZnet Co.,Ltd.> 
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ¡°Software¡±), 
- * to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+ * Copyright ¨Ï 2016 <WIZnet Co.,Ltd.>
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ¡°Software¡±),
+ * to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  *
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
- * THE SOFTWARE IS PROVIDED ¡°AS IS¡±, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
- * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+ * THE SOFTWARE IS PROVIDED ¡°AS IS¡±, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 *********************************************************************************************************************************************************/
 #ifndef _MMC_SD_H_
 #define _MMC_SD_H_
 #include "W7500x.h"
 
-#define MMC_SD_SPI1_PORT		GPIOB
+#define MMC_SD_SPI1_PORT        GPIOB
 
-#define MMC_SD_SCK_PORT		MMC_SD_SPI1_PORT
-#define MMC_SD_SCK_PIN				GPIO_Pin_1
+#define MMC_SD_SCK_PORT         MMC_SD_SPI1_PORT
+#define MMC_SD_SCK_PIN          GPIO_Pin_1
 
-#define MMC_SD_MISO_PORT		MMC_SD_SPI1_PORT
-#define MMC_SD_MISO_PIN			GPIO_Pin_2
+#define MMC_SD_MISO_PORT        MMC_SD_SPI1_PORT
+#define MMC_SD_MISO_PIN         GPIO_Pin_2
 
-#define MMC_SD_MOSI_PORT		MMC_SD_SPI1_PORT
-#define MMC_SD_MOSI_PIN			GPIO_Pin_3
+#define MMC_SD_MOSI_PORT        MMC_SD_SPI1_PORT
+#define MMC_SD_MOSI_PIN         GPIO_Pin_3
 
 
-#define MMC_SD_CS_PORT			GPIOB
-#define MMC_SD_CS_PIN					GPIO_Pin_0
+#define MMC_SD_CS_PORT          GPIOB
+#define MMC_SD_CS_PIN           GPIO_Pin_0
 
 // SD data transmission whether to release the bus after the end of the macro definition
 #define NO_RELEASE 0
@@ -73,15 +73,17 @@
 #define MSD_ADDRESS_ERROR 0x20
 #define MSD_PARAMETER_ERROR 0x40
 #define MSD_RESPONSE_FAILURE 0xFF
- 
+
 // This part should be modified depending on the connection!
 // Mini STM32 uses SD cards as CS PA3 feet.
 // #define SD_CS PAout (3) // SD card selection pin
-/* Select MSD Card: ChipSelect pin low  */ 
-#define MSD_CS_ENABLE()     GPIO_ResetBits(MMC_SD_CS_PORT, MMC_SD_CS_PIN)  
+/* Select MSD Card: ChipSelect pin low  */
+//#define MSD_CS_ENABLE()     GPIO_ResetBits(MMC_SD_CS_PORT, MMC_SD_CS_PIN)
+#define MSD_CS_ENABLE()     GPIOB->LB_MASKED[1] = 0
 
-/* Deselect MSD Card: ChipSelect pin high */  
-#define MSD_CS_DISABLE()     GPIO_SetBits(MMC_SD_CS_PORT, MMC_SD_CS_PIN)  
+/* Deselect MSD Card: ChipSelect pin high */
+//#define MSD_CS_DISABLE()     GPIO_SetBits(MMC_SD_CS_PORT, MMC_SD_CS_PIN)
+#define MSD_CS_DISABLE()     GPIOB->LB_MASKED[1] = 1
 
 #define SPI_SPEED_2   0
 #define SPI_SPEED_4   1
@@ -91,9 +93,9 @@
 
 
 extern uint8_t SD_Type; // SD card type
-	
+
 // Function state area
-void bsp_set_spi1_speed_mmcsd(uint16_t prescaler);
+//void bsp_set_spi1_speed_mmcsd(uint16_t prescaler);
 uint8_t SD_WaitReady (void); // SD card ready to wait
 uint8_t SD_SendCommand (uint8_t cmd, uint32_t arg, uint8_t crc); // SD card to send a command
 uint8_t SD_SendCommand_NoDeassert (uint8_t cmd, uint32_t arg, uint8_t crc);

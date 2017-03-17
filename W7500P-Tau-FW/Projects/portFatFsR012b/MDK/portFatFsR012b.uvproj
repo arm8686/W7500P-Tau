@@ -167,10 +167,10 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>0</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4104</DriverSelection>
+            <DriverSelection>4105</DriverSelection>
           </Flash1>
           <bUseTDR>0</bUseTDR>
-          <Flash2>BIN\CMSIS_AGDI.dll</Flash2>
+          <Flash2>BIN\coocox-agdi.dll</Flash2>
           <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
@@ -343,7 +343,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>0</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>0</OneElfS>
@@ -361,7 +361,7 @@
               <MiscControls></MiscControls>
               <Define>CORTEX_M0 USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include;..\..\..\Libraries\W7500x_stdPeriph_Driver\inc;..\..\..\Libraries\CMSIS\Include;..\;..\..\..\Utilities\ff12b\src</IncludePath>
+              <IncludePath>..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include;..\..\..\Libraries\W7500x_stdPeriph_Driver\inc;..\..\..\Libraries\CMSIS\Include;..\;..\..\..\Utilities\ff12b\src;..\..\..\Utilities\print_x</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -448,6 +448,16 @@
               <FileName>W7500x_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\W7500x_it.c</FilePath>
+            </File>
+            <File>
+              <FileName>mmc_sd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\mmc_sd.c</FilePath>
+            </File>
+            <File>
+              <FileName>print_x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\Utilities\print_x\print_x.c</FilePath>
             </File>
           </Files>
         </Group>

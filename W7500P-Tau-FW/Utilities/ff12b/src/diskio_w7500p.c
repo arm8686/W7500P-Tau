@@ -15,40 +15,20 @@
 #define DEV_USB		2	/* Example: Map USB MSD to physical drive 2 */
 
 
+DSTATUS Stat = 0;  /* Physical drive status */
+
+
 /*-----------------------------------------------------------------------*/
 /* Get Drive Status                                                      */
 /*-----------------------------------------------------------------------*/
 
 DSTATUS disk_status (
-	BYTE pdrv		/* Physical drive nmuber to identify the drive */
+    BYTE drv        /* Physical drive number (0) */
 )
 {
-	DSTATUS stat;
-	int result;
+    if (drv) return STA_NOINIT;     /* Supports only drive 0 */
 
-	switch (pdrv) {
-	case DEV_RAM :
-//		result = RAM_disk_status();
-
-		// translate the reslut code here
-
-		return stat;
-
-	case DEV_MMC :
-//		result = MMC_disk_status();
-
-		// translate the reslut code here
-
-		return stat;
-
-	case DEV_USB :
-//		result = USB_disk_status();
-
-		// translate the reslut code here
-
-		return stat;
-	}
-	return STA_NOINIT;
+    return Stat;    /* Return disk status */
 }
 
 
@@ -61,7 +41,7 @@ DSTATUS disk_initialize (
 	BYTE pdrv				/* Physical drive nmuber to identify the drive */
 )
 {
-	DSTATUS stat;
+	DSTATUS stat=0;
 	int result;
 
 	switch (pdrv) {
@@ -105,36 +85,39 @@ DRESULT disk_read (
 	DRESULT res;
 	int result;
 
-	switch (pdrv) {
-	case DEV_RAM :
-		// translate the arguments here
+    uint8_t r1;
 
-//		result = RAM_disk_read(buff, sector, count);
+    // SPIx_SetSpeed(SPI_SPEED_HIGH); // set to high-speed mode
 
-		// translate the reslut code here
+    // If it is not SDHC, the sector addresses turn into a byte address
+//    if (SD_Type != SD_TYPE_V2HC)
+//        sector = sector <<9;
 
-		return res;
+    // SD_WaitDataReady ();
+    // Read multi-block commands issued
+    r1 = SD_SendCommand (CMD18, sector, 0); // read command
+//    if (r1 != 0x00) return r1;
 
-	case DEV_MMC :
-		// translate the arguments here
+    do // Start receiving data
+    {
+        if (SD_ReceiveData (buff, 512, NO_RELEASE) != 0x00) break;
+        buff += 512;
+    } while (--count);
 
-//		result = MMC_disk_read(buff, sector, count);
+    // All the transmission is completed, send the stop command
+    SD_SendCommand (CMD12, 0, 0);
 
-		// translate the reslut code here
+    // Release bus
+    MSD_CS_DISABLE();
+    bsp_readwritebyte_spi1 (0xFF);
 
-		return res;
+    if (count != 0)
+        return count; // end if not passed, return the remaining number of
+    else
+        return RES_OK;
 
-	case DEV_USB :
-		// translate the arguments here
 
-//		result = USB_disk_read(buff, sector, count);
-
-		// translate the reslut code here
-
-		return res;
-	}
-
-	return RES_PARERR;
+    return RES_PARERR;
 }
 
 
