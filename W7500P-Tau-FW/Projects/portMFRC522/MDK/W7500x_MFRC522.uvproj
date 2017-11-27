@@ -464,11 +464,6 @@
               <FilePath>..\main.c</FilePath>
             </File>
             <File>
-              <FileName>mmc_sd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\mmc_sd.c</FilePath>
-            </File>
-            <File>
               <FileName>W7500x_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\W7500x_it.c</FilePath>

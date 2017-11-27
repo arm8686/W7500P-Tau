@@ -28,15 +28,12 @@
   ******************************************************************************
   */ 
 /* Includes ------------------------------------------------------------------*/
-
 #include "W7500x.h"
-//#include "W7500x_gpio.h"
 #include "W7500x_ssp.h"
-//#include "W7500x_uart.h"
-#include "mmc_sd.h"
 #include "MFRC522.h"
 #include "print_x.h"
 
+/* Defines -------------------------------------------------------------------*/
 #define LED_OFF()     GPIOC->LB_MASKED[1] = 1
 #define LED_ON()      GPIOC->LB_MASKED[1] = 0
 
