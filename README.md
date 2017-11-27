@@ -24,8 +24,6 @@ SW2：用户按键。
 
 另外，在 \W7500P-Tau-FW\Projects 中的 portXXX 工程中，
 
-已实现的有：
-    portFreeRTOS
-    portMFRC522
+已实现的有：portFreeRTOS，portMFRC522。
 
 其它的有待实现。
