@@ -21,3 +21,11 @@ J13，J14，J15，J16：Arduino UNO R3 接口，默认为不焊接。
 
 SW1：复位按键。
 SW2：用户按键。
+
+另外，在 \W7500P-Tau-FW\Projects 中的 portXXX 工程中，
+
+已实现的有：
+    portFreeRTOS
+    portMFRC522
+
+其它的有待实现。

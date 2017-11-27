@@ -61,6 +61,7 @@ void SystemCoreClockUpdate (void)            /* Get Core Clock Frequency      */
     CRG->PLL_IFSR = CRG_PLL_IFSR_RCLK;
 #endif    
     OD = (1 << (CRG->PLL_FCR & 0x01)) * (1 << ((CRG->PLL_FCR & 0x02) >> 1));
+//    OD = (2^(CRG->PLL_FCR & 0x01)) * (2^(CRG->PLL_FCR & 0x02));
     N = (CRG->PLL_FCR >>  8 ) & 0x3F;
     M = (CRG->PLL_FCR >> 16 ) & 0x3F;
 
@@ -120,10 +121,10 @@ void SystemInit (void)
     CRG->WDOGCLK_HS_PVSR = CRG_WDOGCLK_HS_PVSR_DIV4;
     CRG->MONCLK_SSR = CRG_MONCLK_SSR_FCLK;
 
-    CRG->PLL_FCR = 0x00100200;      /* M=16, N=2, OD=0 */
+    CRG->PLL_FCR = 0x00100200;      /* M=16, N=2, OD=1 */
     CRG->PLL_IFSR = CRG_PLL_IFSR_OCLK;
 #else
-    CRG->PLL_FCR = 0x00080200;
+    CRG->PLL_FCR = 0x00080200;      /* M= 8, N=2, OD=1 */
     CRG->PLL_IFSR = CRG_PLL_IFSR_OCLK;
 #endif
 
@@ -131,6 +132,7 @@ void SystemInit (void)
     CRG->PLL_IFSR = CRG_PLL_IFSR_RCLK;
 #endif    
     OD = (1 << (CRG->PLL_FCR & 0x01)) * (1 << ((CRG->PLL_FCR & 0x02) >> 1));
+//    OD = (2^(CRG->PLL_FCR & 0x01)) * (2^(CRG->PLL_FCR & 0x02));
     N = (CRG->PLL_FCR >>  8 ) & 0x3F;
     M = (CRG->PLL_FCR >> 16 ) & 0x3F;
 

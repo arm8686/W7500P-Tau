@@ -1,0 +1,21 @@
+--cpu Cortex-M0
+".\obj\startup_w7500x_freertos.o"
+".\obj\w7500x_gpio.o"
+".\obj\w7500x_crg.o"
+".\obj\w7500x_uart.o"
+".\obj\system_w7500x.o"
+".\obj\main.o"
+".\obj\w7500x_it.o"
+".\obj\port.o"
+".\obj\tasks.o"
+".\obj\list.o"
+".\obj\queue.o"
+".\obj\heap_2.o"
+".\obj\croutine.o"
+".\obj\event_groups.o"
+".\obj\timers.o"
+".\obj\print_x.o"
+--strict --scatter ".\Obj\portFreeRTOS.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\List\portFreeRTOS.map" -o .\Obj\portFreeRTOS.axf

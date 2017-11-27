@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    print_x.h
   * @author  popctrl@163.com
-  * @version V1.0.0
-  * @date    2016-11-01
+  * @version V1.0.1
+  * @date    2017-11-24
   * @brief   for W7500P use UART2
   ******************************************************************************
   * @attention
@@ -40,7 +40,8 @@ extern "C" {
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-extern void prt_str(unsigned char *str);
+
+extern void prt_str(char *str);
 extern void prt_hb(unsigned char byte);
 extern void prt_hh(unsigned short halfword);
 extern void prt_hw(unsigned int word);

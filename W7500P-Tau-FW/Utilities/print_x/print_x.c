@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    print_x.c
   * @author  popctrl@163.com
-  * @version V1.0.0
-  * @date    2016-11-01
+  * @version V1.0.1
+  * @date    2017-11-24
   * @brief   打印字符串，16 进制打印成可显示字符。for W7500P use UART2
   ******************************************************************************
   * @attention
@@ -19,7 +19,7 @@
 
 /*----------------------------------------------------------------------------*/
 
-void prt_str(unsigned char *str);
+void prt_str(char *str);
 void prt_hb(unsigned char byte);
 void prt_hh(unsigned short halfword);
 void prt_hw(unsigned int word);
@@ -28,7 +28,7 @@ void test_print_x(void);
 
 /*----------------------------------------------------------------------------*/
 
-void prt_str(unsigned char *str)
+void prt_str(char *str)
 {
     while(*str) {
         while(UART2->STATE & S_UART_STATE_TX_BUF_FULL);
