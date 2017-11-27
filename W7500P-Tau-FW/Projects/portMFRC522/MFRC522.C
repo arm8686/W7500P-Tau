@@ -1,6 +1,3 @@
-//#include <intrins.h>
-//#include "lpcreg.h"
-//#include "main.h"
 #include "MFRC522.h"
 #include "W7500x.h"
 #include "W7500x_ssp.h"
