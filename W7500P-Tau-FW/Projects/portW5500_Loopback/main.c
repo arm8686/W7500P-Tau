@@ -1,22 +1,9 @@
-/*******************************************************************************************************************************************************
- * Copyright ¨Ï 2016 <WIZnet Co.,Ltd.> 
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ¡°Software¡±), 
- * to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
- * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
- * THE SOFTWARE IS PROVIDED ¡°AS IS¡±, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
- * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
- * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*********************************************************************************************************************************************************/
 /**
   ******************************************************************************
-  * @file    SSP/SD_Card_LED/main.c 
+  * @file    portW5500_Loopback/main.c 
   * @author  popctrl@163.com
   * @version V1.0.0
-  * @date    06-Nov-2016
+  * @date    2017/11/28
   * @brief   Main program body
   ******************************************************************************
   * @attention
@@ -28,45 +15,54 @@
   * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
   *
-  * <h2><center>&copy; COPYRIGHT 2016 </center></h2>
+  * <h2><center>&copy; COPYRIGHT 2017 </center></h2>
   ******************************************************************************
   */ 
 
 /* Includes ------------------------------------------------------------------*/
 //#include <stdio.h>
 #include "W7500x.h"
-//#include "W7500x_gpio.h"
-//#include "W7500x_ssp.h"
-//#include "W7500x_uart.h"
-#include "mmc_sd.h"
+#include "W7500x_ssp.h"
 #include "print_x.h"
 
+#include "wizchip_conf.h"
+#include "loopback.h"
+
 /* Private typedef -----------------------------------------------------------*/
-typedef enum {FAILED = 0, PASSED = !FAILED} TestStatus;
-
 /* Private define ------------------------------------------------------------*/
-#define BLOCK_SIZE            512 /* Can not be used 512 Block */
+#define CHIP_RST_HIGH()     GPIOC->LB_MASKED[0x01] = 0x01
+#define CHIP_RST_LOW()      GPIOC->LB_MASKED[0x01] = 0x00
 
-#define NUMBER_OF_BLOCKS      2  /* For Multi Blocks operation (Read/Write) */
-#define MULTI_BUFFER_SIZE    (BLOCK_SIZE * NUMBER_OF_BLOCKS)
+// Socket & Port number definition for Examples
+#define SOCK_TCPS       0
+#define SOCK_UDPS       1
+#define PORT_TCPS       5000
+#define PORT_UDPS       3000
+
+// Shared Buffer Definition for Loopback test
+//#define DATA_BUF_SIZE   2048  // defined in loopback.h
+uint8_t gDATABUF[DATA_BUF_SIZE];
 
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-//UART_InitTypeDef UART_InitStructure;
-uint8_t Buffer_Block_Tx[BLOCK_SIZE];
-uint8_t Buffer_Block_Rx[BLOCK_SIZE];
-uint8_t Buffer_MultiBlock_Tx[MULTI_BUFFER_SIZE];
-uint8_t Buffer_MultiBlock_Rx[MULTI_BUFFER_SIZE];
-volatile TestStatus EraseStatus = FAILED;
-volatile TestStatus TransferStatus1 = FAILED;
-volatile TestStatus TransferStatus2 = FAILED;
+wiz_NetInfo gWIZNETINFO = { .mac = {0x00, 0x08, 0xdc, 0xab, 0xcd, 0xef},
+                            .ip = {192, 168, 137, 20},
+                            .sn = {255, 255, 255, 0},
+                            .gw = {192, 168, 137, 1},
+                            .dns = {0, 0, 0, 0},
+                            .dhcp = NETINFO_STATIC };
+
 
 /* Private function prototypes -----------------------------------------------*/
-void SD_SingleBlockTest(void);
-void SD_MultiBlockTest(void);
+void wizchip_select(void);
+void wizchip_deselect(void);
+uint8_t wizchip_rw(uint8_t byte);
+void wizchip_write(uint8_t wb);
+uint8_t wizchip_read(void);
+
+void SPI1_Init(void);
+void W5500_Init(void);
 void delay_ms(__IO uint32_t nCount);
-TestStatus Buffercmp(uint8_t* pBuffer1, uint8_t* pBuffer2, uint32_t BufferLength);
-TestStatus eBuffercmp(uint8_t* pBuffer, uint32_t BufferLength);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -76,146 +72,128 @@ TestStatus eBuffercmp(uint8_t* pBuffer, uint32_t BufferLength);
   */
 int main()
 {
+    uint8_t tmp;
 //    GPIO_InitTypeDef GPIO_InitDef;
     /* Set System init */
     SystemInit();
+    SPI1_Init();
 
-    /* Configure UART2 */
+    /* Configure UART2, Baudrate = 115200, 8, 1, None */
     UART2->BAUDDIV = 417;   /* (48000000 / 115200) */
     UART2->CTRL |= (S_UART_CTRL_RX_EN | S_UART_CTRL_TX_EN);
 
-//    S_UART_Init(115200);
-    prt_str("W7500P ---SD Card (just read)--- Test!\r\n\r\n");
+    prt_str("\r\n( W7500P <-> W5500 ) --- Loopback Test! ---\r\n\r\n");
 
-    /* GPIO PA_02 CLKOUT Set */
-//    GPIO_InitDef.GPIO_Pin = GPIO_Pin_2; // Set to PA_02 (CLKOUT)
-//    GPIO_InitDef.GPIO_Mode = GPIO_Mode_AF; // Set to Mode AF
-//    GPIO_InitDef.GPIO_Pad = GPIO_PuPd_DOWN;
-//    GPIO_Init(GPIOA, &GPIO_InitDef);
-//    PAD_AFConfig(PAD_PA,GPIO_Pin_2, PAD_AF2); // PAD Config - used 2nd Function
+    W5500_Init();
 
-//     test_print_x();
-    
-    /* CLK OUT Set */
-//    PAD_AFConfig(PAD_PA,GPIO_Pin_2, PAD_AF2); // PAD Config - CLKOUT used 3nd Function
-    /*SD_GPIO_Initailization*/
-    bsp_sd_gpio_init();
+    tmp = getVERSIONR();
 
-    /*SD_Initialization*/
-    SD_Init();
+    prt_str("W5500 Chip Version: "); prt_hb(tmp); prt_str(".\r\n");
 
-    /*Single Block Test*/
-    SD_SingleBlockTest();
-
-    /*Multi(32) Block Test*/
-    SD_MultiBlockTest();
+    /* wizchip netconf */
+    ctlnetwork(CN_SET_NETINFO, (void*) &gWIZNETINFO);
             
-	while(1)
-	{
-	}
+	  while(1)
+	  {
+        loopback_udps(SOCK_UDPS, gDATABUF, PORT_UDPS);
+        loopback_tcps(SOCK_TCPS, gDATABUF, PORT_TCPS);
+	  }
 }
 
 /**
-  * @brief  Tests the SD card Single Blocks operations.
+  * @brief  Chip Select  Wiznet W5500 operations.
   * @param  None
   * @retval None
   */
-void SD_SingleBlockTest(void)
-{    
-  uint8_t tmp;
-  uint16_t i,j;
-
-  /* Read block of 512 bytes on address 0 */
-  SD_ReadSingleBlock (0x00, Buffer_Block_Rx);
-
-  prt_str("\r\nRead Singleblock of 512 bytes on address 0:\r\n\r\n");
-  for (i=0;i<32;i++){ for (j=0;j<16;j++) {prt_hb(Buffer_Block_Rx[i*16+j]); prt_str(" ");} prt_str("\r\n");}
-
-  for(tmp=0; tmp<20; tmp++)
-  {
-    delay_ms(50);
-//    GPIO_ResetBits(GPIOC, GPIO_Pin_0); // LED(R) On
-    GPIOC->LB_MASKED[1] = 0x00;
-    delay_ms(50);
-//    GPIO_SetBits(GPIOC, GPIO_Pin_0); // LED(R) Off
-    GPIOC->LB_MASKED[1] = 0x01;
-  }
-
+void wizchip_select(void)
+{
+    GPIOC->LB_MASKED[0x10] = 0x00;
+    __NOP(); __NOP();
 }
 
 /**
-  * @brief  Tests the SD card Single Blocks operations.
+  * @brief  Chip Deselect  Wiznet W5500 operations.
   * @param  None
   * @retval None
   */
-void SD_MultiBlockTest(void)
+void wizchip_deselect(void)
 {
-  uint8_t tmp;
-  uint16_t i,j;
-
-  /* Read block of 512 bytes on address 0 */
-//  while(1)
-  SD_ReadMultiBlock (0x00, Buffer_MultiBlock_Rx, NUMBER_OF_BLOCKS);
-
-  prt_str("\r\nRead Multiblock of 512 bytes on address 0:\r\n\r\n");
-  for (i=0;i<32;i++){ for (j=0;j<16;j++) {prt_hb(Buffer_MultiBlock_Rx[i*16+j]); prt_str(" ");} prt_str("\r\n");}
-
-  for(tmp=0; tmp<10; tmp++)
-  {
-    delay_ms(150);
-//    GPIO_ResetBits(GPIOC, GPIO_Pin_0); // LED(R) On
-    GPIOC->LB_MASKED[1] = 0x00;
-    delay_ms(150);
-//    GPIO_SetBits(GPIOC, GPIO_Pin_0); // LED(R) Off
-    GPIOC->LB_MASKED[1] = 0x01;
-  }
-
+    __NOP(); __NOP();
+    GPIOC->LB_MASKED[0x10] = 0x10;
 }
 
 /**
-  * @brief  Compares two buffers.
-  * @param  pBuffer1, pBuffer2: buffers to be compared.
-  * @param  BufferLength: buffer's length
-  * @retval PASSED: pBuffer1 identical to pBuffer2
-  *         FAILED: pBuffer1 differs from pBuffer2
+  * @brief  wizchip_rw Function
   */
-TestStatus Buffercmp(uint8_t* pBuffer1, uint8_t* pBuffer2, uint32_t BufferLength)
+uint8_t wizchip_rw(uint8_t byte)
 {
-  while (BufferLength--)
-  {
-    if (*pBuffer1 != *pBuffer2)
-    {
-      return FAILED;
-    }
-
-    pBuffer1++;
-    pBuffer2++;
-  }
-
-  return PASSED;
+    /* Loop while DR register in not emplty */
+    while((SSP1->SR & SSP_FLAG_TNF) == RESET);
+    SSP1->DR = byte;
+    /* Wait to receive a byte */
+    while((SSP1->SR & SSP_FLAG_RNE) == RESET);
+    return SSP1->DR;
 }
 
 /**
-  * @brief  Checks if a buffer has all its values are equal to zero.
-  * @param  pBuffer: buffer to be compared.
-  * @param  BufferLength: buffer's length
-  * @retval PASSED: pBuffer values are zero
-  *         FAILED: At least one value from pBuffer buffer is different from zero.
+  * @brief  wizchip_write Function
   */
-TestStatus eBuffercmp(uint8_t* pBuffer, uint32_t BufferLength)
+void wizchip_write(uint8_t wb)
 {
-  while (BufferLength--)
-  {
-    /* In some SD Cards the erased state is 0xFF, in others it's 0x00 */
-    if ((*pBuffer != 0xFF) && (*pBuffer != 0x00))
-    {
-      return FAILED;
-    }
+    wizchip_rw(wb);
+}
 
-    pBuffer++;
-  }
+/**
+  * @brief  wizchip_read Function
+  */
+uint8_t wizchip_read(void)
+{
+    return wizchip_rw(0xFF);
+}
 
-  return PASSED;
+/**
+  * @brief  SPI1_Init Function
+  */
+void SPI1_Init(void)
+{
+    SSP1->CR0 |= (uint32_t)( SSP_FrameFormat_MO | SSP_CPHA_1Edge | SSP_CPOL_Low | SSP_DataSize_8b );
+    SSP1->CR1 |= (uint32_t)(SSP_SOD_RESET | SSP_Mode_Master | SSP_NSS_Hard | SSP_SSE_SET | SSP_LBM_RESET );
+//    SSP1->CPSR = SSP_BaudRatePrescaler_2;
+    SSP1->CPSR = 24;   // 48,000,000 / 24 = 2,000,000 (2MHz)
+
+    /* GPIO PC_04 SPI1 nCS Set */
+    GPIOC->OUTENSET = (0x01<<4);
+    PC_PCR->Port[4] = 0x06;         // High driving strength & pull-up
+    PC_AFSR->Port[4] = 0x01;        // GPIOC_4
+    GPIOC->LB_MASKED[0x10] = 0x10;  // set GPIOC_4 high
+
+    /* GPIO PB_00 Set */
+    GPIOB->OUTENSET = 0x01;
+    PB_PCR->Port[0] = 0x06;         // High driving strength & pull-up
+    PB_AFSR->Port[0] = 0x01;        // GPIOB_0
+    GPIOB->LB_MASKED[0x01] = 0x01;  // set GPIOB_0 high
+
+    /* GPIO PC_00 nReset W5500 Set */
+    GPIOC->OUTENSET = 0x01;
+    PC_PCR->Port[0] = 0x06;
+    PC_AFSR->Port[0] = 0x01;
+    GPIOC->LB_MASKED[1] = 1;
+}
+
+/**
+  * @brief  W5500 Init Function
+  */
+void W5500_Init(void)
+{
+    CHIP_RST_HIGH();
+    delay_ms(3);
+    CHIP_RST_LOW();
+    delay_ms(3);
+    CHIP_RST_HIGH();
+    delay_ms(3);
+
+    reg_wizchip_cs_cbfunc(wizchip_select, wizchip_deselect);
+    reg_wizchip_spi_cbfunc(wizchip_read, wizchip_write);
 }
 
 /**

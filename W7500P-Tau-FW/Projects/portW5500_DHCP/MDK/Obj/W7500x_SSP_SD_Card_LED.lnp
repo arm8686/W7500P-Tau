@@ -1,0 +1,17 @@
+--cpu Cortex-M0
+".\obj\startup_w7500x.o"
+".\obj\w7500x_gpio.o"
+".\obj\w7500x_ssp.o"
+".\obj\system_w7500x.o"
+".\obj\main.o"
+".\obj\mmc_sd.o"
+".\obj\w7500x_it.o"
+".\obj\print_x.o"
+".\obj\wizchip_conf.o"
+".\obj\w5500.o"
+".\obj\socket.o"
+".\obj\dhcp.o"
+--strict --scatter ".\Obj\W7500x_SSP_SD_Card_LED.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\List\W7500x_SSP_SD_Card_LED.map" -o .\Obj\W7500x_SSP_SD_Card_LED.axf

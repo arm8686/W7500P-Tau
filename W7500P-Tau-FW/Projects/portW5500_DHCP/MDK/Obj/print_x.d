@@ -1,0 +1,9 @@
+.\obj\print_x.o: ..\..\..\Utilities\print_x\print_x.c
+.\obj\print_x.o: ..\..\..\Utilities\print_x\print_x.h
+.\obj\print_x.o: ..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\W7500x.h
+.\obj\print_x.o: ..\..\..\Libraries\CMSIS\Include\core_cm0.h
+.\obj\print_x.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\print_x.o: ..\..\..\Libraries\CMSIS\Include\core_cmInstr.h
+.\obj\print_x.o: ..\..\..\Libraries\CMSIS\Include\core_cmFunc.h
+.\obj\print_x.o: ..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\system_W7500x.h
+.\obj\print_x.o: ..\..\..\Libraries\CMSIS\Device\WIZnet\W7500\Include\W7500x.h

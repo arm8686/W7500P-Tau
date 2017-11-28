@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 /* Loopback test debug message printout enable */
-#define	_LOOPBACK_DEBUG_
+//#define	_LOOPBACK_DEBUG_
 
 /* DATA_BUF_SIZE define for Loopback example */
 #ifndef DATA_BUF_SIZE
